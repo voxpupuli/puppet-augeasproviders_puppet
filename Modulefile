@@ -1,0 +1,8 @@
+name    'herculesteam-augeasproviders_puppet'
+version '1.0.0'
+source 'git://github.com/hercules-team/augeasproviders_puppet'
+author 'Dominic Cleal, Raphael Pinson'
+license 'Apache 2.0'
+summary 'Augeas-based Puppet configuration files types and providers for Puppet'
+description 'This module provides types/providers for Puppet configuration files using the Augeas configuration API library.'
+project_page 'http://augeasproviders.com'
