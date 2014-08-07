@@ -53,7 +53,7 @@ puppet\_auth              | **yes** | **yes** | **yes** | **yes** |
 ## Documentation and examples
 
 Type documentation can be generated with `puppet doc -r type` or viewed on the
-[Puppet Forge page](http://forge.puppetlabs.com/herculesteam/augeasproviders_sysctl).
+[Puppet Forge page](http://forge.puppetlabs.com/herculesteam/augeasproviders_puppet).
 
 
 ### puppet_auth provider
