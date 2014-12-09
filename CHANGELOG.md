@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.0.2
+
+- Add requirements in metadata.json
+
 ## 2.0.1
 
 - Convert specs to rspec3 syntax
