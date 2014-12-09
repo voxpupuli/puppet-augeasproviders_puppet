@@ -29,10 +29,10 @@ describe provider_class, :if => valid_lens? do
       ))
 
       aug_open(target, "Puppet_Auth.lns") do |aug|
-        aug.match("path").size.should == 1
-        aug.get("path").should == "/facts"
-        aug.match("path/operator").size.should == 0
-        aug.get("path/auth").should == "any"
+        expect(aug.match("path").size).to eq(1)
+        expect(aug.get("path")).to eq("/facts")
+        expect(aug.match("path/operator").size).to eq(0)
+        expect(aug.get("path/auth")).to eq("any")
       end
     end
   end
@@ -57,10 +57,10 @@ describe provider_class, :if => valid_lens? do
         }
       }
 
-      inst.size.should == 9
-      inst[0].should == {:path_regex=>:true, :methods=>["find"], :environments=>[], :authenticated=>:absent, :allow=>["$1"], :allow_ip=>[], :ensure=>:present, :name=>"Auth rule matching ^/catalog/([^/]+)$", :path=>"^/catalog/([^/]+)$"}
-      inst[2].should == {:path_regex=>:false, :methods=>["find"], :environments=>[], :authenticated=>:absent, :allow=>["*"], :allow_ip=>[], :ensure=>:present, :name=>"Auth rule for /certificate_revocation_list/ca", :path=>"/certificate_revocation_list/ca"}
-      inst[7].should == {:path_regex=>:false, :methods=>["find", "save"], :environments=>[], :authenticated=>"any", :allow=>["*"], :allow_ip=>[], :ensure=>:present, :name=>"Auth rule for /certificate_request", :path=>"/certificate_request"}
+      expect(inst.size).to eq(9)
+      expect(inst[0]).to eq({:path_regex=>:true, :methods=>["find"], :environments=>[], :authenticated=>:absent, :allow=>["$1"], :allow_ip=>[], :ensure=>:present, :name=>"Auth rule matching ^/catalog/([^/]+)$", :path=>"^/catalog/([^/]+)$"})
+      expect(inst[2]).to eq({:path_regex=>:false, :methods=>["find"], :environments=>[], :authenticated=>:absent, :allow=>["*"], :allow_ip=>[], :ensure=>:present, :name=>"Auth rule for /certificate_revocation_list/ca", :path=>"/certificate_revocation_list/ca"})
+      expect(inst[7]).to eq({:path_regex=>:false, :methods=>["find", "save"], :environments=>[], :authenticated=>"any", :allow=>["*"], :allow_ip=>[], :ensure=>:present, :name=>"Auth rule for /certificate_request", :path=>"/certificate_request"})
     end
 
     describe "when creating settings" do
@@ -78,10 +78,10 @@ describe provider_class, :if => valid_lens? do
         ))
 
         aug_open(target, "Puppet_Auth.lns") do |aug|
-          aug.get("path[last()-1]").should == "/facts"
-          aug.get("path[.='/facts']/environment/1").should == "staging"
-          aug.match("path[.='/facts']/method/*").size.should == 1
-          aug.get("path[.='/facts']/method/1").should == "find"
+          expect(aug.get("path[last()-1]")).to eq("/facts")
+          expect(aug.get("path[.='/facts']/environment/1")).to eq("staging")
+          expect(aug.match("path[.='/facts']/method/*").size).to eq(1)
+          expect(aug.get("path[.='/facts']/method/1")).to eq("find")
         end
       end
 
@@ -97,7 +97,7 @@ describe provider_class, :if => valid_lens? do
         ))
 
         aug_open(target, "Puppet_Auth.lns") do |aug|
-          aug.get("path[.='^/foo/([^/]+)$']/operator").should == '~'
+          expect(aug.get("path[.='^/foo/([^/]+)$']/operator")).to eq('~')
         end
       end
     end
@@ -117,11 +117,11 @@ describe provider_class, :if => valid_lens? do
         ))
 
         aug_open(target, "Puppet_Auth.lns") do |aug|
-          aug.get("path[.='/certificate/']/environment/1").should == "staging"
-          aug.get("path[.='/certificate/']/auth").should == "on"
-          aug.get("path[.='/certificate/']/allow/1").should == "localhost.localdomain"
-          aug.get("path[.='/certificate/']/allow/2").should == "example.com"
-          aug.get("path[.='/certificate/']/allow_ip/1").should == "192.168.0.1/32"
+          expect(aug.get("path[.='/certificate/']/environment/1")).to eq("staging")
+          expect(aug.get("path[.='/certificate/']/auth")).to eq("on")
+          expect(aug.get("path[.='/certificate/']/allow/1")).to eq("localhost.localdomain")
+          expect(aug.get("path[.='/certificate/']/allow/2")).to eq("example.com")
+          expect(aug.get("path[.='/certificate/']/allow_ip/1")).to eq("192.168.0.1/32")
         end
       end
 
@@ -136,8 +136,8 @@ describe provider_class, :if => valid_lens? do
         ))
 
         aug_open(target, "Puppet_Auth.lns") do |aug|
-          aug.match("path[.='/certificate_request']/method").size.should == 1
-          aug.get("path[.='/certificate_request']/method/1").should == "find"
+          expect(aug.match("path[.='/certificate_request']/method").size).to eq(1)
+          expect(aug.get("path[.='/certificate_request']/method/1")).to eq("find")
         end
       end
 
@@ -151,7 +151,7 @@ describe provider_class, :if => valid_lens? do
         ))
 
         aug_open(target, "Puppet_Auth.lns") do |aug|
-          aug.match("path[.='/certificate_request']").size.should == 0
+          expect(aug.match("path[.='/certificate_request']").size).to eq(0)
         end
       end
     end
@@ -170,9 +170,9 @@ describe provider_class, :if => valid_lens? do
         :ensure   => "present"
       ))
 
-      txn.any_failed?.should_not == nil
-      @logs.first.level.should == :err
-      @logs.first.message.include?(target).should == true
+      expect(txn.any_failed?).not_to eq(nil)
+      expect(@logs.first.level).to eq(:err)
+      expect(@logs.first.message.include?(target)).to eq(true)
     end
   end
 end
