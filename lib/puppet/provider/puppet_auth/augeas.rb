@@ -13,7 +13,7 @@ Puppet::Type.type(:puppet_auth).provide(:augeas, :parent => Puppet::Type.type(:a
     "last deny"   => "path[count(allow)=0][last()]",
   }
 
-  default_file { '/etc/puppet/auth.conf' }
+  default_file { File.join(Puppet[:confdir], 'auth.conf') }
 
   lens { 'Puppet_Auth.lns' }
 
