@@ -1,5 +1,9 @@
 # Changelog
 
+## 2.1.0
+
+- Use $confdir instead of static path
+
 ## 2.0.2
 
 - Add requirements in metadata.json
