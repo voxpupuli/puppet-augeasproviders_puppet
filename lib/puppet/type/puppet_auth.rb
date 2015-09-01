@@ -77,6 +77,10 @@ This parameter takes special values working as aliases:
     desc "The list of hosts allowed for this rule,
 specified by hostname or cername. Regexes are allowed,
 as well as the special value `*`."
+
+    validate do |val|
+      raise ArgumentError, "The allow parameter cannot be undef" if val == :undef
+    end
   end
 
   newproperty(:allow_ip, :array_matching => :all) do
