@@ -3,7 +3,6 @@
 [![Puppet Forge Endorsement](https://img.shields.io/puppetforge/e/herculesteam/augeasproviders_puppet.svg)](https://forge.puppetlabs.com/herculesteam/augeasproviders_puppet)
 [![Build Status](https://img.shields.io/travis/hercules-team/augeasproviders_puppet/master.svg)](https://travis-ci.org/hercules-team/augeasproviders_puppet)
 [![Coverage Status](https://img.shields.io/coveralls/hercules-team/augeasproviders_puppet.svg)](https://coveralls.io/r/hercules-team/augeasproviders_puppet)
-[![Gemnasium](https://img.shields.io/gemnasium/hercules-team/augeasproviders_puppet.svg)](https://gemnasium.com/hercules-team/augeasproviders_puppet)
 
 
 # puppet: types/providers for Puppet files for Puppet
