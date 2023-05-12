@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Manages settings in Puppet's auth.conf file
 #
 # Copyright (c) 2012 Raphaël Pinson
@@ -10,26 +12,26 @@ Puppet::Type.newtype(:puppet_auth) do
 
   def munge_boolean(value)
     case value
-    when true, "true", :true
+    when true, 'true', :true
       :true
-    when false, "false", :false
+    when false, 'false', :false
       :false
     else
-      fail("munge_boolean only takes booleans")
+      raise('munge_boolean only takes booleans')
     end
   end
 
   newparam(:name) do
-    desc "The name of the resource."
+    desc 'The name of the resource.'
     isnamevar
   end
 
   newparam(:path) do
-    desc "The path for the auth rule."
+    desc 'The path for the auth rule.'
   end
 
-  newparam(:path_regex, :boolean => true) do
-    desc "Whether the path is specified as a regex."
+  newparam(:path_regex, boolean: true) do
+    desc 'Whether the path is specified as a regex.'
 
     newvalues(:true, :false)
 
@@ -60,11 +62,11 @@ This parameter takes special values working as aliases:
 - `last deny`, mapping to path[count(allow)=0][last()]`"
   end
 
-  newproperty(:environments, :array_matching => :all) do
-    desc "The list of environments the rule applies to."
+  newproperty(:environments, array_matching: :all) do
+    desc 'The list of environments the rule applies to.'
   end
 
-  newproperty(:methods, :array_matching => :all) do
+  newproperty(:methods, array_matching: :all) do
     desc "The list of methods the rule applies to. Possible values are:
 
 - find;
@@ -73,17 +75,17 @@ This parameter takes special values working as aliases:
 - destroy."
   end
 
-  newproperty(:allow, :array_matching => :all) do
+  newproperty(:allow, array_matching: :all) do
     desc "The list of hosts allowed for this rule,
 specified by hostname or cername. Regexes are allowed,
 as well as the special value `*`."
 
     validate do |val|
-      raise ArgumentError, "The allow parameter cannot be undef" if val == :undef
+      raise ArgumentError, 'The allow parameter cannot be undef' if val == :undef
     end
   end
 
-  newproperty(:allow_ip, :array_matching => :all) do
+  newproperty(:allow_ip, array_matching: :all) do
     desc "The list of IPs allowed for this rule.
 Requires Puppet 3.0.0 or greater."
   end
