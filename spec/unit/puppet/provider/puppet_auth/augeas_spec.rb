@@ -11,8 +11,8 @@ end
 
 describe provider_class, if: valid_lens? do
   before do
-    FileTest.stubs(:exist?).returns false
-    FileTest.stubs(:exist?).with('/etc/puppet/auth.conf').returns true
+    allow(FileTest).to receive(:exist?).and_return(false)
+    allow(FileTest).to receive(:exist?).with('/etc/puppet/auth.conf').and_return(true)
   end
 
   context 'with empty file' do
