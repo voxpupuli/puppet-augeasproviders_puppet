@@ -43,7 +43,7 @@ describe provider_class, if: valid_lens? do
     let(:target) { tmptarget.path }
 
     it 'lists instances' do
-      provider_class.stubs(:target).returns(target)
+      allow(provider_class).to receive(:target).and_return(target)
       inst = provider_class.instances.map do |p|
         {
           name: p.get(:name),
