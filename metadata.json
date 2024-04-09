@@ -1,6 +1,6 @@
 {
   "name": "puppet-augeasproviders_puppet",
-  "version": "3.0.0",
+  "version": "3.0.1-rc0",
   "author": "Vox Pupuli",
   "summary": "Augeas-based Puppet configuration files types and providers for Puppet",
   "license": "Apache-2.0",
