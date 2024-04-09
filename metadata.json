@@ -1,12 +1,12 @@
 {
-  "name": "herculesteam-augeasproviders_puppet",
+  "name": "puppet-augeasproviders_puppet",
   "version": "2.2.1",
-  "author": "Raphael Pinson",
+  "author": "Vox Pupuli",
   "summary": "Augeas-based Puppet configuration files types and providers for Puppet",
   "license": "Apache-2.0",
-  "source": "https://github.com/hercules-team/augeasproviders_puppet",
-  "project_page": "https://github.com/hercules-team/augeasproviders_puppet",
-  "issues_url": "https://github.com/hercules-team/augeasproviders_puppet/issues",
+  "source": "https://github.com/puppet/augeasproviders_puppet",
+  "project_page": "https://github.com/puppet/augeasproviders_puppet",
+  "issues_url": "https://github.com/puppet/augeasproviders_puppet/issues",
   "description": "This module provides types/providers for Puppet configuration files using the Augeas configuration API library.",
   "dependencies": [
     {
